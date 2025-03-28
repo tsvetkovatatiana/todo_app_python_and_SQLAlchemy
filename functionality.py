@@ -75,12 +75,13 @@ def login():
 
 
 def show_notes():
+    global current_user_id
     print("Yours TODOs: ======================================================================")
 
     with Session() as session:
         notes = session.query(Note)
 
-        notes_amount = session.query(Note).count()
+        notes_amount = session.query(Note).filter(Note.ownerId == current_user_id).count()
         if notes_amount < 1:
             print("Empty. You should add some notes first.")
             return
