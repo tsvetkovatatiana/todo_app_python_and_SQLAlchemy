@@ -28,10 +28,11 @@ def register():
             else:
                 new_user = User(username=username, password=password)
                 session.add(new_user)
-                print(
-                    "Now you are in the system ======================================================================")
-                current_user_id = User.userId
                 session.commit()
+                session.refresh(new_user)
+
+                print("Now you are in the system ===================================================================")
+                current_user_id = new_user.userId
                 break
 
 
