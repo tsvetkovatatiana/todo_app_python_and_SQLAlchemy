@@ -94,7 +94,7 @@ def show_notes():
         print(f"""{os.linesep}– {note_id}: {note_name}
         – Description: {note_description}
         – Owner: {note_owner}
-        – Time Added: {time_added}
+        – Time Added: {time_added.strftime('%Y-%m-%d %H:%M')}
         """)
 
     print("======================================================================" + os.linesep)
