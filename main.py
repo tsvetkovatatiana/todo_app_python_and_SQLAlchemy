@@ -26,18 +26,19 @@ def main():
 
     while True:
         print(f"{os.linesep}What do you want to do today?")
-        print("1: View todo items")
-        print("2: Create new todo item")
-        print("3: Remove item")
+        print("1: View todo notes")
+        print("2: Create new to-do note")
+        print("3: Remove note")
         print("4: Exit" + os.linesep)
 
         selection = input()
-        if selection == "1": show_items()
-        if selection == "2": create_item()
-        if selection == "3": remove_item()
+        if selection == "1": show_notes()
+        if selection == "2": create_note()
+        if selection == "3": remove_note()
         if selection == "4": sys.exit("Goodbye")
 
 
 if __name__ == '__main__':
-    print("Welcome to TODO LIST Maker VERSION 5550574.00")
+    print("======================================================================")
+    print("Welcome to HOLDON to do list!")
     main()
