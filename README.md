@@ -3,8 +3,7 @@
 ## About
 The project is called HOLDON because it was created during exam time, a period when it was difficult to keep track of all the tasks that needed to be completed. A big high five to all the CS students! 🖐🏻
 
-<img src="images/Screenshot.png" alt="Welcome_page" width="400">
-<img src="images/Screenshot_2.png" alt="How_todo_looks" width="400">
+<img src="images/Screenshot.png" alt="Welcome_page" width="400">   <img src="images/Screenshot_2.png" alt="How_todo_looks" width="400">
 
 *Perfect for terminal nerds🧑🏻‍💻*
 
