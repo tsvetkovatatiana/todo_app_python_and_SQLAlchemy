@@ -1,6 +1,6 @@
 import os
 
-from database import Note, User, Session
+from database import Note, User, UserNote, Session
 
 # Tracking logged-in user
 current_user_id = 0
@@ -79,7 +79,8 @@ def show_notes():
     print("Yours TODOs: ======================================================================")
 
     with Session() as session:
-        notes = session.query(Note)
+        notes = session.query(Note).join(UserNote).filter(
+            (Note.ownerId == current_user_id) | (UserNote.userId == current_user_id)).all()
 
         notes_amount = session.query(Note).filter(Note.ownerId == current_user_id).count()
         if notes_amount < 1:
@@ -126,6 +127,12 @@ def create_note():
     with Session() as session:
         new_note = Note(name=note_name, description=description, ownerId=current_user_id)
         session.add(new_note)
+        session.commit()
+        print("Note created successfully! ==============================================================")
+
+        # Adding entry to associative table userNotes
+        user_note_entry = UserNote(userId=current_user_id, noteId=new_note.noteId)
+        session.add(user_note_entry)
         session.commit()
 
 
