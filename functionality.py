@@ -157,9 +157,9 @@ def remove_note():
             print("Invalid ID. Please enter a number.")
             return
 
-        note_to_remove = session.query(Note).filter(Note.noteId == note_id)
-        if note_to_remove.count() > 0:
-            session.delete(note_to_remove.one())
+        note_to_remove = session.query(Note).filter(Note.noteId == note_id, Note.ownerId == current_user_id).first()
+        if note_to_remove:
+            session.delete(note_to_remove)
             session.commit()
             print("Note was removed ================================================================")
         else:
