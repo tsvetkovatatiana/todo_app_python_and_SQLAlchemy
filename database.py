@@ -13,14 +13,14 @@ class Note(Base):
     noteId = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
     description = Column(String, nullable=True)
-    timeAdded = Column(DateTime, default=datetime.now())  # Used AI here, because it was the fastest way to check
+    timeAdded = Column(DateTime, default=datetime.now)  # Used AI here, because it was the fastest way to check
     # The owner of the note (Primary owner)
     ownerId = Column(Integer, ForeignKey("users.userId"), nullable=False)
 
     # and with owner I used help, because I stuck with many-to-many kind of relationship and note
     # that need to have unique owner, so I interpreted it as a primary owner.
     # So users can share a note with a primary owner of that note
-    owner = relationship("User", foreign_keys=[ownerId])
+    owner = relationship("User", foreign_keys=lambda: [Note.ownerId])
     users = relationship("User", secondary="user_notes", back_populates="notes")
 
 # Users
