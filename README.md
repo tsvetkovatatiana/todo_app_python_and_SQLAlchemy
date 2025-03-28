@@ -1,7 +1,7 @@
 # HOLDON To-Do List
 
 ## About
-It called HOLDON because it was made during exam time, which was hard to hold on and remember every task to be completed. High five to all CS students! ✋
+The project called HOLDON because it was made during exam time, which was hard to hold on and remember every task to be completed. High five to all CS students! ✋
 
 <img src="images/Screenshot.png" alt="Welcome_page" width="400">
 <img src="images/Screenshot_2.png" alt="How_todo_looks" width="400">
