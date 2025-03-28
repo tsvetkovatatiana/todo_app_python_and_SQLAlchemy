@@ -52,16 +52,22 @@ def login():
                 print("Wrong username. Try again or create a new account")
                 print("1: Try again")
                 print("2: Register")
-                try:
-                    selection = int(input())
-                    if selection == 1:
+
+                while True:
+                    try:
+                        selection = int(input().strip())
+                        if selection == 1:
+                            break
+                        elif selection == 2:
+                            register()
+                            return
+                        else:
+                            print("Invalid option. Please enter 1 or 2.")
+                    except ValueError:
+                        print("Oops! Invalid entrance. Try again")
                         continue
-                    elif selection == 2:
-                        register()
-                        return
-                except ValueError:
-                    print("Oops! Invalid entrance. Try again")
-                    continue
+
+                continue
 
             print("Your password: ")
             password = input()
