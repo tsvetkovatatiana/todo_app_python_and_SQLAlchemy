@@ -30,13 +30,14 @@ class User(Base):
     username = Column(String, nullable=False)
     password = Column(String, nullable=False)
 
-    items = relationship("Item", secondary="user_items", back_populates="users")
+
+    notes = relationship("Note", secondary="user_notes", back_populates="users")
 
 # User's todos
-class UserItem(Base):
-    __tablename__ = "user_items"
+class UserNote(Base):
+    __tablename__ = "user_notes"
     userId = Column(Integer, ForeignKey("users.userId"), primary_key=True)
-    itemId = Column(Integer, ForeignKey("items.itemId"), primary_key=True)
+    noteId = Column(Integer, ForeignKey("notes.noteId"), primary_key=True)
 
 
 Base.metadata.create_all(engine)
