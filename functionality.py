@@ -151,7 +151,11 @@ def remove_note():
             return
 
         print("Give Id to remove: ")
-        note_id = int(input())
+        try:
+            note_id = int(input().strip())
+        except ValueError:
+            print("Invalid ID. Please enter a number.")
+            return
 
         note_to_remove = session.query(Note).filter(Note.noteId == note_id)
         if note_to_remove.count() > 0:
