@@ -2,6 +2,28 @@ from functionality import *
 
 
 def main():
+
+    while True:
+        print("======================================================================")
+        print(f'''I will help you to remember all kind of things that you need to be done in one place.
+                \nBut first you need to register or login to your existing account''')
+
+        print("1. Register")
+        print("2. Login")
+        print("3: Exit" + os.linesep)
+        try:
+            selection = int(input())
+            if selection == 1:
+                register()
+                break
+            elif selection == 2:
+                login()
+                break
+            elif selection == 3: sys.exit("Goodbye")
+        except ValueError:
+            print("Oops! Invalid entrance. Try again")
+
+
     while True:
         print(f"{os.linesep}What do you want to do today?")
         print("1: View todo items")
