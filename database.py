@@ -4,12 +4,13 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateT
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
 Base = declarative_base()
-engine = create_engine("sqlite:///todo.db", echo=True, future=True)
+engine = create_engine("sqlite:///todo.db", future=True)
 
-# Items
-class Item(Base):
-    __tablename__ = "items"
-    itemId = Column(Integer, primary_key=True, autoincrement=True)
+
+# Notes
+class Note(Base):
+    __tablename__ = "notes"
+    noteId = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
     description = Column(String, nullable=True)
     timeAdded = Column(DateTime, default=datetime.now())  # Used AI here, because it was the fastest way to check
