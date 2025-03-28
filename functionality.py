@@ -147,6 +147,9 @@ def remove_note():
         notes_amount = session.query(Note).count()
         if notes_amount < 1:
             print("You should add some notes first.")
+        notes = session.query(Note).filter(Note.ownerId == current_user_id).all()
+
+            print("Empty. You should add some notes first.")
             return
 
         print("Give Id to remove: ")
