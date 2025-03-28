@@ -13,7 +13,7 @@ def register():
     while True:
         with Session() as session:
             print("Your username: ")
-            username = input()
+            username = input().strip()
             print("Your password: ")
             password = input()
             if not username or not password:
@@ -43,9 +43,10 @@ def login():
     while True:
         with Session() as session:
             print("Your username: ")
-            username = input()
+            username = input().strip()
 
             user = session.query(User).filter(User.username == username).first()
+
             if user is None:
                 print("Wrong username. Try again or create a new account")
                 print("1: Try again")
@@ -65,8 +66,7 @@ def login():
             password = input()
 
             if user.password == password:
-                print(
-                    f"Login successful! Welcome, {username} ======================================================================")
+                print(f"Login successful! Welcome, {username} =======================================================")
                 current_user_id = user.userId
                 return
             else:
@@ -82,22 +82,21 @@ def show_notes():
         notes = session.query(Note).join(UserNote).filter(
             (Note.ownerId == current_user_id) | (UserNote.userId == current_user_id)).all()
 
-        notes_amount = session.query(Note).filter(Note.ownerId == current_user_id).count()
-        if notes_amount < 1:
+        if len(notes) < 1:
             print("Empty. You should add some notes first.")
             return
 
-    for note in notes:
-        note_id = note.noteId
-        note_name = note.name
-        note_description = note.description
-        note_owner = note.owner.username
-        time_added = note.timeAdded
-        print(f"""{os.linesep}– {note_id}: {note_name}
-        – Description: {note_description}
-        – Owner: {note_owner}
-        – Time Added: {time_added.strftime('%Y-%m-%d %H:%M')}
-        """)
+        for note in notes:
+            note_id = note.noteId
+            note_name = note.name
+            note_description = note.description
+            note_owner = note.owner.username
+            time_added = note.timeAdded
+            print(f"""{os.linesep}– {note_id}: {note_name}
+            – Description: {note_description}
+            – Owner: {note_owner}
+            – Time Added: {time_added.strftime('%Y-%m-%d %H:%M')}
+            """)
 
     print("======================================================================" + os.linesep)
 
@@ -150,5 +149,6 @@ def remove_note():
         if note_to_remove.count() > 0:
             session.delete(note_to_remove.one())
             session.commit()
+            print("Note was removed ================================================================")
         else:
             print("Invalid Id")
