@@ -20,7 +20,7 @@ HOLDON is a simple to-do list CLI application built with Python and SQLAlchemy. 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/holdon-todo.git
+   git clone https://github.com/tsvetkovatatiana/holdon-todo.git
    cd holdon-todo
    ```
 2. Create and activate a virtual environment:
